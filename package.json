@@ -1,0 +1,66 @@
+{
+  "name": "nodedesktop-system-monitor",
+  "productName": "System Monitor",
+  "version": "0.1.0",
+  "description": "A GNOME System Monitor-style process, resource and file system monitor for Linux, built with Electron.",
+  "main": "src/main/main.js",
+  "desktopName": "nodedesktop-system-monitor.desktop",
+  "author": "avgogames",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "os": [
+    "linux"
+  ],
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "test": "node --test test/*.test.js",
+    "check": "node --check src/main/main.js && node --test test/*.test.js",
+    "dist": "electron-builder --linux",
+    "dist:dir": "electron-builder --linux --dir"
+  },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "io.github.avgogames.NodeDesktopSystemMonitor",
+    "productName": "System Monitor",
+    "executableName": "nodedesktop-system-monitor",
+    "files": [
+      "src/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "System",
+      "icon": "build/icon.png",
+      "synopsis": "Process, resource and file system monitor",
+      "desktop": {
+        "entry": {
+          "Name": "System Monitor",
+          "Comment": "View current processes and monitor system state",
+          "Keywords": "Monitor;System;Process;CPU;Memory;Network;Task;Manager;",
+          "Categories": "System;Monitor;"
+        }
+      },
+      "syncDesktopName": true,
+      "artifactName": "${name}-${version}-${arch}.${ext}"
+    },
+    "deb": {
+      "depends": [
+        "policykit-1 | polkitd"
+      ]
+    }
+  }
+}
