@@ -5,7 +5,10 @@
   "description": "A GNOME System Monitor-style process, resource and file system monitor for Linux, built with Electron.",
   "main": "src/main/main.js",
   "desktopName": "nodedesktop-system-monitor.desktop",
-  "author": "avgogames",
+  "author": {
+    "name": "avgogames",
+    "email": "336244506+avgogames@users.noreply.github.com"
+  },
   "license": "GPL-3.0-or-later",
   "private": true,
   "engines": {
@@ -56,11 +59,6 @@
       },
       "syncDesktopName": true,
       "artifactName": "${name}-${version}-${arch}.${ext}"
-    },
-    "deb": {
-      "depends": [
-        "policykit-1 | polkitd"
-      ]
     }
   }
 }
